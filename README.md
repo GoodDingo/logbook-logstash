@@ -44,16 +44,18 @@ Json outputs are provided by the LogstashFormatter logging formatter, for instan
     log.info('My test')
 ```
 
+You can provide extra variables, and show the exception traceback.
+
 ```python
 
-    logger.info({"account": 123, "ip": "172.20.19.18"})
-    logger.info("classic message for account: %s", account, extra={"account": account})
+    log.info({"account": 123, "ip": "172.20.19.18"})
+    log.info("classic message for account: %s", account, extra={"account": account})
 
     try:
-      h = {}
-      h['key']
+        h = {}
+        h['key']
     except:
-      logger.info("something unexpected happened", exc_info=True)
+        log.info("something unexpected happened", exc_info=True)
 ```
 
 ## Sample output
