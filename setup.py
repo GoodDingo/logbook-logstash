@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='logbook-logstash',
-    version='0.1.0',
+    version='0.1.2',
     author='Darío Blanco Iturriaga',
     author_email='dario@darioblanco.com',
     packages=['logbook_logstash'],
