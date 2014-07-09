@@ -1,15 +1,17 @@
-# logbook-logstash: JSON logs with logstash format for logbook
+# logbook-logstash
+
+JSON logs with logstash format for logbook
 
 This library is provided to allow [logbook](http://pythonhosted.org/Logbook/) logging to output log data
 as json objects ready to be shipped out to logstash.
 
-This project is a fork of exoscale/python-logstash-formatter
+This project is a fork of [exoscale/python-logstash-formatter](https://github.com/exoscale/python-logstash-formatter)
 
 ## Installing
 
 Pip:
 
-    ``pip install logbook-logstash``
+    $ pip install logbook-logstash
 
 Pypi:
 
@@ -17,7 +19,7 @@ Pypi:
 
 Manual:
 
-    ``python setup.py install``
+    $ python setup.py install
 
 
 ## Usage
