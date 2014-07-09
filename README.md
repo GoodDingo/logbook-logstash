@@ -25,8 +25,7 @@ Manual:
 
 Json outputs are provided by the LogstashFormatter logging formatter, for instance:
 
-```
-python
+```python
 
     import sys
 
@@ -43,8 +42,7 @@ python
     log.info('My test')
 ```
 
-
-::
+```python
 
     logger.info({"account": 123, "ip": "172.20.19.18"})
     logger.info("classic message for account: %s", account, extra={"account": account})
@@ -54,6 +52,7 @@ python
       h['key']
     except:
       logger.info("something unexpected happened", exc_info=True)
+```
 
 ## Sample output
 
@@ -65,7 +64,7 @@ The following keys will be found in the output JSON:
 * ``@message``: short message for this log
 * ``@fields``: all extra fields
 
-::
+```python
 
   {
     "@fields": {
@@ -96,4 +95,4 @@ The following keys will be found in the output JSON:
     "@source_host": "phoenix.spootnik.org",
     "@timestamp": "2013-05-02T09:39:48.013158"
   }
-
+```
