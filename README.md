@@ -1,66 +1,62 @@
-logstash_formatter: JSON logs for logstash
-==========================================
+# logbook-logstash: JSON logs with logstash format for logbook
 
-This library is provided to allow standard python logging to output log data
+This library is provided to allow [logbook](http://pythonhosted.org/Logbook/) logging to output log data
 as json objects ready to be shipped out to logstash.
 
-Installing
-----------
+This project is a fork of exoscale/python-logstash-formatter
+
+## Installing
+
 Pip:
 
-    ``pip install logstash_formatter``
+    ``pip install logbook-logstash``
 
 Pypi:
 
-   https://pypi.python.org/pypi/logstash_formatter
+   https://pypi.python.org/pypi/logbook-logstash
 
 Manual:
 
     ``python setup.py install``
 
-Usage
------
 
-Json outputs are provided by the LogstashFormatter logging formatter.
+## Usage
 
-::
 
-    import logging
-    from logstash_formatter import LogstashFormatter
+Json outputs are provided by the LogstashFormatter logging formatter, for instance:
 
-    logger = logging.getLogger()
-    handler = logging.StreamHandler()
-    formatter = LogstashFormatter()
+```
+python
 
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
+    import sys
 
-The LogstashFormatter may take the following named parameters:
+    import logbook_logstash
+    from logbook import Logger, StreamHandler
 
-* ``fmt``: Config as a JSON string that supports:
-  * ``extra``: provide extra fields always present in logs
-  * ``source_host``: override source host name
-* ``json_cls``: JSON encoder to forward to ``json.dump``
-* ``json_default``: Default JSON representation for unknown types,
-    by default coerce everythiung to a string
 
-You can also add extra fields to your json output by specifying a dict in place of message, or by specifying
-the named argument ``extra`` as a dictionary. When supplying the ``exc_info`` named argument with a truthy value,
-and if an exception is found on the stack, its traceback will be attached to the payload as well.
+    log = Logger('testlog')
+
+    handler = StreamHandler(sys.stdout)
+    handler.formatter = logbook_logstash.LogstashFormatter()
+    handler.push_application()
+
+    log.info('My test')
+```
+
 
 ::
 
     logger.info({"account": 123, "ip": "172.20.19.18"})
     logger.info("classic message for account: %s", account, extra={"account": account})
-    
+
     try:
       h = {}
       h['key']
     except:
       logger.info("something unexpected happened", exc_info=True)
 
-Sample output
--------------
+## Sample output
+
 
 The following keys will be found in the output JSON:
 
