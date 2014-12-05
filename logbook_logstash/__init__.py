@@ -85,6 +85,12 @@ class LogstashFormatter(object):
         if 'exc_text' in fields and not fields['exc_text']:
             fields.pop('exc_text')
 
+        handler_fields = handler.__dict__.copy()
+        # Delete useless fields (they hold object references)
+        for delete_handler_field in ['stream', 'formatter', 'lock']:
+            if delete_handler_field in handler_fields:
+                handler_fields.pop(delete_handler_field)
+
         logr = self.defaults.copy()
 
         logr.update(
@@ -92,7 +98,8 @@ class LogstashFormatter(object):
              '@timestamp': datetime.datetime.utcnow().strftime('%Y-%m-%dT'
                                                                '%H:%M:%S.%fZ'),
              '@source_host': self.source_host,
-             '@fields': self._build_fields(logr, fields)}
+             '@fields': self._build_fields(logr, fields),
+             '@handler': handler_fields}
         )
 
         return json.dumps(logr, default=self.json_default, cls=self.json_cls)

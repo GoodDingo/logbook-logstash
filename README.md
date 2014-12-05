@@ -100,3 +100,10 @@ The following keys will be found in the output JSON:
     "@timestamp": "2013-05-02T09:39:48.013158"
   }
 ```
+
+## Tests
+
+This project has basic tests, and uses the `pytest` library. Just execute the following commands in the project root.
+
+    $ pip install -r dev-requirements.txt
+    $ py.test
