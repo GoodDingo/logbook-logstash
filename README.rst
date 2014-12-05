@@ -60,8 +60,8 @@ You can provide extra variables, and show the exception traceback.
         log.info({"account": 123, "ip": "172.20.19.18"})
         log.info("classic message for account: %s", account, extra={"account": account})
 
+        h = {}
         try:
-            h = {}
             h['key']
         except:
             log.info("something unexpected happened", exc_info=True)
