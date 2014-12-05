@@ -13,6 +13,6 @@ setup(
     url='https://github.com/sharkerz/logbook-logstash/',
     license='LICENSE',
     description='JSON logstash formatter for logbook',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
     zip_safe=False,
 )
