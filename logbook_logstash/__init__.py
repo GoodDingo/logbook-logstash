@@ -3,7 +3,7 @@
 import socket
 import datetime
 import traceback as tb
-import ujson
+import ujson as json
 
 
 def _default_json_default(obj):
