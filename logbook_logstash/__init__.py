@@ -121,4 +121,4 @@ class LogstashFormatter(object):
                 {'foo': 'one'}
         True
         """
-        return dict(defaults.get('@fields', {}).items() + fields.items())
+        return {**defaults.get('@fields', {}), **fields}
